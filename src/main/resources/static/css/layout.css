@@ -53,8 +53,9 @@
 .header__search{
 
   grid-column: 3/5;
-  padding-top: 5%;
  align-self: center;
+
+
   
 }
 
