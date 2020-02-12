@@ -17,6 +17,7 @@
 }
 
 .container__images{
+ 
   grid-column:3/5;
   grid-row:2;
 }
@@ -29,6 +30,7 @@
 
 
 .main__images{
+
   grid-column: 3/5;
 }
 
@@ -43,12 +45,19 @@
 
 .navbar ul{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height:100%;
   align-items: center;
 }
 
 .header__search{
-  grid-column: 4;
+
+  grid-column: 3/5;
   padding-top: 5%;
+ align-self: center;
+  
+}
+
+.header__search input{
+  width: 90%;
 }

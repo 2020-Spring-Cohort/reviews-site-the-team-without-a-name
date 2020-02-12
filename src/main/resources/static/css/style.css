@@ -14,8 +14,23 @@ a{
   text-decoration: none;
   color: #ddd;
 }
+
+a:hover{
+
+  background-color: gray;
+  padding: 2px;
+}
+
+
 .navbar{
   grid-row: 1;
+}
+
+i{
+
+  background-color: gray;
+  border-radius: 10px 0 0 10px;
+
 }
 
 .navbar ul{
@@ -43,6 +58,6 @@ a{
 
 .review{
 
-  
+
 
 }
