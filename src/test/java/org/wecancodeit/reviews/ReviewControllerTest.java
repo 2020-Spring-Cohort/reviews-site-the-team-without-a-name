@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class ReviewControllerTest {
@@ -35,7 +36,11 @@ public class ReviewControllerTest {
         verify(mockModel).addAttribute("category", testReview);
 
     }
-
+    @Test
+    public void shouldRetrunViewNamedReviewWhenDisplayedSingleCategoryIsCalled(){
+        String viewName = underTest.displaySingleReview("Coupe", mockModel);
+        assertThat(viewName).isEqualTo("reviewView");
+    }
 }
 
 
