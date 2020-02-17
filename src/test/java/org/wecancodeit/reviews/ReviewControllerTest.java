@@ -6,9 +6,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class ReviewControllerTest {
 
@@ -40,6 +45,17 @@ public class ReviewControllerTest {
     public void shouldRetrunViewNamedReviewWhenDisplayedSingleCategoryIsCalled(){
         String viewName = underTest.displaySingleReview("Coupe", mockModel);
         assertThat(viewName).isEqualTo("reviewView");
+    }
+    @Test
+    public void shouldGoToIndividualEndPoint() throws Exception{
+        Review testReview = new Review("coupe");
+        when(mockStorage.findReviewByCategory("coupe")).thenReturn(testReview);
+
+        mockMvc.perform(get("/category/coupe"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("reviewView"))
+                .andExpect(model().attributeExists("category"))
+                .andExpect(model().attribute("category",testReview));
     }
 }
 
