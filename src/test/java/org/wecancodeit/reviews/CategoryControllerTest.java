@@ -3,7 +3,6 @@ package org.wecancodeit.reviews;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -13,20 +12,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class ReviewControllerTest {
+public class CategoryControllerTest {
 
     private MockMvc mockMvc;
-    private ReviewController underTest;
-    private ReviewStorage mockStorage;
+    private CategoryController underTest;
+    private CategoryStorage mockStorage;
     private Model mockModel;
 
     @BeforeEach
     public void setUp(){
         mockModel = mock(Model.class);
-        mockStorage = mock(ReviewStorage.class);
-        underTest = new ReviewController(mockStorage);
+        mockStorage = mock(CategoryStorage.class);
+        underTest = new CategoryController(mockStorage);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
 

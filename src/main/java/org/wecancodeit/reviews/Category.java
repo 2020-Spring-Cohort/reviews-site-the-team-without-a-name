@@ -2,12 +2,12 @@ package org.wecancodeit.reviews;
 
 import java.util.Objects;
 
-public class Review {
+public class Category {
     private String type;
 
-    public Review(String type){
+    public Category(String type){
 
-         this.type = type;
+        this.type = type;
     }
 
     public String getType(){
@@ -18,8 +18,8 @@ public class Review {
     public boolean equals(Object o){
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
-        Review review = (Review) o;
-        return Objects.equals(type, review.type);
+        Category category = (Category) o;
+        return Objects.equals(type, category.type);
     }
 
     @Override

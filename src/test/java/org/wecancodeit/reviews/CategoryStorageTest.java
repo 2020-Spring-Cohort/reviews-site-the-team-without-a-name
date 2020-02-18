@@ -4,21 +4,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ReviewStorageTest {
+public class CategoryStorageTest {
 
     @Test
     public void ReviewStorageTest() {
         Review testReview = new Review("Sedan");
-        ReviewStorage underTest = new MapReviewStorage();
+        CategoryStorage underTest = new MapCategoryStorage();
         underTest.store(testReview);
-        assertThat(underTest.findAllReviews()).contains(testReview);
+        assertThat(underTest.findAllCategories()).contains(testReview);
     }
 
     @Test
     public void shouldRetrieveSingleReviewByCategory(){
         Review testReview1 = new Review("Sedan");
         Review testReview2 = new Review("Coupe");
-        ReviewStorage underTest = new MapReviewStorage();
+        CategoryStorage underTest = new MapCategoryStorage();
         underTest.store(testReview1);
         underTest.store(testReview2);
         Review retrieveReview1 = underTest.findReviewByCategory("Sedan");

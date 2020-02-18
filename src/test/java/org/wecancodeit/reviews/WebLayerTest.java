@@ -21,7 +21,7 @@ public class WebLayerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    ReviewStorage mockStorage;
+    CategoryStorage mockStorage;
     @Test
     public void reviewShouldBeOKAndReturnTheReviewViewWithTheViewModelAttribute() throws Exception {
 
