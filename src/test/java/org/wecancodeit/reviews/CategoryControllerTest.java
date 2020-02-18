@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
+
+import java.util.Collections;
+import java.util.List;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +25,7 @@ public class CategoryControllerTest {
     private Model mockModel;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         mockModel = mock(Model.class);
         mockStorage = mock(CategoryStorage.class);
         underTest = new CategoryController(mockStorage);
@@ -29,31 +33,47 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void shouldReturnViewWithOneReview(){
-        Review testReview = new Review("Car");
-        when(mockStorage.findReviewByCategory("Sedan")).thenReturn(testReview);
+    public void shouldReturnViewWithOneReview() {
+        Category testCategory = new Category("Car");
+        when(mockStorage.findCategoryByType("Sedan")).thenReturn(testCategory);
 
-        underTest.displaySingleReview("Sedan", mockModel);
+        underTest.displaySingleCategory("Sedan", mockModel);
 
-        verify(mockStorage).findReviewByCategory("Sedan");
-        verify(mockModel).addAttribute("category", testReview);
+        verify(mockStorage).findCategoryByType("Sedan");
+        verify(mockModel).addAttribute("category", testCategory);
 
     }
-    @Test
-    public void shouldRetrunViewNamedReviewWhenDisplayedSingleCategoryIsCalled(){
-        String viewName = underTest.displaySingleReview("Coupe", mockModel);
-        assertThat(viewName).isEqualTo("reviewView");
-    }
-    @Test
-    public void shouldGoToIndividualEndPoint() throws Exception{
-        Review testReview = new Review("coupe");
-        when(mockStorage.findReviewByCategory("coupe")).thenReturn(testReview);
 
-        mockMvc.perform(get("/category/coupe"))
+    @Test
+    public void shouldReturnViewNamedCatergoryWhenDisplayedSingleCategoryIsCalled() {
+        String viewName = underTest.displaySingleCategory("Coupe", mockModel);
+        assertThat(viewName).isEqualTo("categoryView");
+    }
+
+    @Test
+    public void shouldGoToIndividualEndPoint() throws Exception {
+        Category testCategory = new Category("coupe");
+        when(mockStorage.findCategoryByType("coupe")).thenReturn(testCategory);
+
+        mockMvc.perform(get("/categories/coupe"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("reviewView"))
+                .andExpect(view().name("categoryView"))
                 .andExpect(model().attributeExists("category"))
-                .andExpect(model().attribute("category",testReview));
+                .andExpect(model().attribute("category", testCategory));
+    }
+
+    @Test
+    public void categoryControllerShouldInstantiate() throws Exception {
+        Category testCategory = new Category("coupe");
+
+        List<Category> categoryCollection = Collections.singletonList(testCategory);
+        when(mockStorage.findAllCategories()).thenReturn(categoryCollection);
+        mockMvc.perform(get("/categories"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("categoriesView"))
+                .andExpect(model().attributeExists("categories"))
+                .andExpect(model().attribute("categories", categoryCollection));
     }
 }
 

@@ -20,10 +20,10 @@ public class CategoryController {
 
     }
 
-    @RequestMapping("/categories/{reviewsCategory}")
-    public String displaySingleReview(@PathVariable String reviewType, Model model) {
-        Review retrieveType = categoryStorage.findCategoryByType(reviewType);
-        model.addAttribute("category", retrieveType);
+    @RequestMapping("/categories/{categoryType}")
+    public String displaySingleCategory(@PathVariable String categoryType, Model model) {
+        Category retrieveCategory = categoryStorage.findCategoryByType(categoryType);
+        model.addAttribute("category", retrieveCategory);
 
         return "categoryView";
     }

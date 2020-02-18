@@ -8,23 +8,24 @@ public class CategoryStorageTest {
 
     @Test
     public void ReviewStorageTest() {
-        Review testReview = new Review("Sedan");
+        Category testCategory = new Category("Sedan");
         CategoryStorage underTest = new MapCategoryStorage();
-        underTest.store(testReview);
-        assertThat(underTest.findAllCategories()).contains(testReview);
+        underTest.store(testCategory);
+        assertThat(underTest.findAllCategories()).contains(testCategory);
     }
 
     @Test
     public void shouldRetrieveSingleReviewByCategory(){
-        Review testReview1 = new Review("Sedan");
-        Review testReview2 = new Review("Coupe");
-        CategoryStorage underTest = new MapCategoryStorage();
-        underTest.store(testReview1);
-        underTest.store(testReview2);
-        Review retrieveReview1 = underTest.findReviewByCategory("Sedan");
-        Review retrieveReview2 = underTest.findReviewByCategory("Coupe");
-        assertThat(retrieveReview1).isEqualTo(testReview1);
-        assertThat(retrieveReview2).isEqualTo(testReview2);
+        Category testCategory1 = new Category("Sedan");
+        Category testCategory2 = new Category("Coupe");
+        CategoryStorage underTest =
+                new MapCategoryStorage();
+        underTest.store(testCategory1);
+        underTest.store(testCategory2);
+        Category retrieveCategory1 = underTest.findCategoryByType("Sedan");
+        Category retrieveCategory2 = underTest.findCategoryByType("Coupe");
+        assertThat(retrieveCategory1).isEqualTo(testCategory1);
+        assertThat(retrieveCategory2).isEqualTo(testCategory2);
 
     }
 }

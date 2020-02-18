@@ -20,7 +20,7 @@ public class MapCategoryStorage implements CategoryStorage {
 
     @Override
     public void store(Category category){
-        this.categories.put(category.getType(), category);
+        categories.put(category.getType(), category);
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.util.Collection;
 public interface CategoryStorage {
 
 
-    public Collection<Review> findAllCategories();
+    public Collection<Category> findAllCategories();
 
 
 
@@ -14,7 +14,7 @@ public interface CategoryStorage {
 
 
 
-    public Review findCategoryByType(String categoryType);
+    public Category findCategoryByType(String categoryType);
 
 
 
