@@ -25,11 +25,11 @@ public class WebLayerTest {
     @Test
     public void reviewShouldBeOKAndReturnTheReviewViewWithTheViewModelAttribute() throws Exception {
 
-        mockMvc.perform(get("/reviews"))
+        mockMvc.perform(get("/categories"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("reviewsView"))
-                .andExpect(model().attributeExists("reviews"));
+                .andExpect(view().name("categoriesView"))
+                .andExpect(model().attributeExists("categories"));
 
     }
 }
