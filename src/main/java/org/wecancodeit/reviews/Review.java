@@ -3,11 +3,15 @@ package org.wecancodeit.reviews;
 import java.util.Objects;
 
 public class Review {
+    private final String reviewBody;
+    private final String title;
     private String type;
 
-    public Review(String type){
+    public Review(String type, String title, String reviewBody){
 
          this.type = type;
+         this.title = title;
+         this.reviewBody = reviewBody;
     }
 
     public String getType(){

@@ -31,10 +31,11 @@
     </nav>
 </header>
 <main class="container__main">
-    <h2 th:each="category:${categories}"><a th:text="${category.type}" th:href="@{'/categories/' + ${category.type}}">Sedan</a>Sedan</h2>
+    <h2 th:each="category:${categories}"><a th:text="${category.type}" th:href="@{'/categories/' + ${category.type}}">Sedan</a></h2>
 
     
 </main>
 </body>
+
 
 </html>
