@@ -1,4 +1,7 @@
 package org.wecancodeit.reviews;
 
-public interface ReviewRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface ReviewRepository extends CrudRepository<Review,Long> {
+
 }
