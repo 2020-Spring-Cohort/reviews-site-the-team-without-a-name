@@ -1,10 +1,13 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.Integration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.annotation.DirtiesContext;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.storage.repositories.CategoryRepository;
+import org.wecancodeit.reviews.models.Review;
+import org.wecancodeit.reviews.storage.repositories.ReviewRepository;
 
 import java.util.Optional;
 

@@ -1,6 +1,8 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.storage;
 
 import org.junit.jupiter.api.Test;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.storage.repositories.CategoryRepository;
 
 
 import java.util.Collections;

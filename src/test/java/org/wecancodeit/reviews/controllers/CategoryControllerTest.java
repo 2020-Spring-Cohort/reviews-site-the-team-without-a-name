@@ -1,10 +1,12 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
+import org.wecancodeit.reviews.models.Category;
+import org.wecancodeit.reviews.storage.CategoryStorage;
 
 import java.util.Collections;
 import java.util.List;

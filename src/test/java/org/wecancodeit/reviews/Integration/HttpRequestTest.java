@@ -1,4 +1,4 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.Integration;
 
 
 import org.junit.jupiter.api.Test;

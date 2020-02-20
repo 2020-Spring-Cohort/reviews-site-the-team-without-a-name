@@ -1,5 +1,6 @@
-package org.wecancodeit.reviews;
+package org.wecancodeit.reviews.storage;
 
+import org.wecancodeit.reviews.models.Category;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
