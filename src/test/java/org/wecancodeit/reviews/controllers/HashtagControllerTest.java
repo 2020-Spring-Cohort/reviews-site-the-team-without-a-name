@@ -2,6 +2,9 @@ package org.wecancodeit.reviews.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wecancodeit.reviews.models.Category;
 import org.wecancodeit.reviews.models.Hashtag;
@@ -11,6 +14,8 @@ import org.wecancodeit.reviews.storage.ReviewStorage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 public class HashtagControllerTest {
@@ -40,7 +45,15 @@ public class HashtagControllerTest {
         verify(mockStorage).findHashtagById(1L);
         verify(model).addAttribute("hashtag", testHashtag);
     }
-
+    @Test
+    public void displayBookMappingIsCorrect() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/hashtag/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("hashtag-view"))
+                .andExpect(model().attributeExists("hashtag"))
+                .andExpect(model().attribute("hashtag", testHashtag));
+    }
 
 }
 
