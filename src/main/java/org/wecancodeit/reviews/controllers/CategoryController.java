@@ -15,10 +15,11 @@ public class CategoryController {
     public CategoryController(CategoryStorage categoryStorage) {
         this.categoryStorage = categoryStorage;
     }
+
     @RequestMapping("/categories")
     public String displayCategory(Model model){
         model.addAttribute("categories", categoryStorage.findAllCategories());
-        return "categoriesView";
+        return "categories-view";
 
     }
 
@@ -27,6 +28,6 @@ public class CategoryController {
         Category retrieveCategory = categoryStorage.findCategoryByType(categoryType);
         model.addAttribute("category", retrieveCategory);
 
-        return "categoryView";
+        return "category-view";
     }
 }

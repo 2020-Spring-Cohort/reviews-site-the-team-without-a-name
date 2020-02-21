@@ -49,7 +49,7 @@ public class CategoryControllerTest {
     @Test
     public void shouldReturnViewNamedCatergoryWhenDisplayedSingleCategoryIsCalled() {
         String viewName = underTest.displaySingleCategory("Coupe", mockModel);
-        assertThat(viewName).isEqualTo("categoryView");
+        assertThat(viewName).isEqualTo("category-view");
     }
 
     @Test
@@ -59,7 +59,7 @@ public class CategoryControllerTest {
 
         mockMvc.perform(get("/categories/coupe"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("categoryView"))
+                .andExpect(view().name("category-view"))
                 .andExpect(model().attributeExists("category"))
                 .andExpect(model().attribute("category", testCategory));
     }
@@ -73,7 +73,7 @@ public class CategoryControllerTest {
         mockMvc.perform(get("/categories"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("categoriesView"))
+                .andExpect(view().name("categories-view"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attribute("categories", categoryCollection));
     }

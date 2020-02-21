@@ -51,4 +51,12 @@ public class Category {
         return reviews;
 
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

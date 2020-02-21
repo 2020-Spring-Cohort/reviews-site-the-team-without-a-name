@@ -30,7 +30,7 @@
     </nav>
 </header>
 <main class="container__main">
-    <h2 th:text="${category}"></h2>
+    <h2 th:text="${category.type}"></h2>
     <ul th:each="review:${reviews}">
         <li> <a th:href="/category/${category}/${review}"> </a>  </li>
 

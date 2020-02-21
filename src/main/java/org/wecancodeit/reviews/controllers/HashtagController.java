@@ -16,11 +16,17 @@ public class HashtagController {
         this.hashtagStorage = hashtagStorage;
     }
 
-@RequestMapping("/hashtag/{id}")
+    @RequestMapping("/hashtags")
+    public String displayHashtag(Model model){
+        model.addAttribute("hashtags", hashtagStorage.findAllHashtags());
+        return "hashtags-view";
+
+    }
+
+@RequestMapping("/hashtags/{id}")
     public String displayHashtag(@PathVariable Long id, Model model) {
         Hashtag retrievedHashtag = hashtagStorage.findHashtagById(id);
         model.addAttribute("hashtag",retrievedHashtag);
         return "hashtag-view";
-
     }
 }

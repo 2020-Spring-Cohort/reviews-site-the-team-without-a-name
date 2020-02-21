@@ -10,18 +10,27 @@ import java.util.Objects;
 public class Hashtag {
 
     private String hashtag;
+
+    public Long getId() {
+        return id;
+    }
+
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToMany(mappedBy = "hashtag")
+    @ManyToMany(mappedBy = "hashtags")
     private Collection<Review> reviews;
+
+    public String getHashtag() {
+        return hashtag;
+    }
 
     public Hashtag(){
 
     }
 
-    public Hashtag(String anything) {
-        this.hashtag = anything;
+    public Hashtag(String hashtag) {
+        this.hashtag = hashtag;
     }
 
     @Override
