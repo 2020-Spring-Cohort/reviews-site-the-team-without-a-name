@@ -16,7 +16,7 @@ public class HashtagJpaImpTest {
         underTest.store(testHashtag);
         verify(hashtagRepo).save(testHashtag);
 
-
     }
+
 
 }

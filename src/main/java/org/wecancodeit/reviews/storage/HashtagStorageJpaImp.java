@@ -9,6 +9,7 @@ import org.wecancodeit.reviews.storage.repositories.HashtagRepository;
 public class HashtagStorageJpaImp implements HashtagStorage {
     private HashtagRepository hashtagRepository;
 
+
     public HashtagStorageJpaImp(HashtagRepository hashtagRepository){
         this.hashtagRepository = hashtagRepository;
     }
@@ -16,6 +17,10 @@ public class HashtagStorageJpaImp implements HashtagStorage {
     public void store(Hashtag hashtagToStore){
         hashtagRepository.save(hashtagToStore);
 
+    }
+    @Override
+    public Hashtag findHashtagById(Long id){
+        return hashtagRepository.findById(id).get();
     }
 
 }
