@@ -1,5 +1,7 @@
 package org.wecancodeit.reviews.models;
 
+import org.wecancodeit.reviews.storage.CategoryStorage;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

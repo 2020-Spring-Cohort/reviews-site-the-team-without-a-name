@@ -7,16 +7,16 @@ import java.util.Collection;
 public interface CategoryStorage {
 
 
-    public Collection<Category> findAllCategories();
+    Collection<Category> findAllCategories();
 
 
 
-    public void store(Category category);
+    void store(Category category);
 
 
 
 
-    public Category findCategoryByType(String categoryType);
+    Category findCategoryByType(String categoryType);
 
 
 

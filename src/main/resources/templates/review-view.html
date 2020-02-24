@@ -13,6 +13,7 @@
 </head>
 
 <body class="container">
+
 <header class="container__header">
     <div class="header__page-title">
         <h1>Fast Track To Nowhere</h1>
@@ -23,18 +24,37 @@
     </div>
     <nav class="navbar">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li> <a href="hashtags.html">Search</a></li>
-            <li><a href="categories.html">Categories</a></li>
+            <li><a href="index">Home</a></li>
+            <li> <a href="hashtags">Search</a></li>
+            <li><a href="categories">Categories</a></li>
         </ul>
     </nav>
 </header>
 <main class="container__main">
-    <h1 th:text="${category.name}">Coupe</h1>
-    <div><a href="coupe.html"></a> -Coupe</div>
-    <a href="coupe-review-1.html">This is a review</a>
-    <a href="coupe-review-2.html">This is another review</a>
+    <h2 class="main__header"> Very Biased Sedan Reviews</h2>
+    <section class="main__review review">
+
+        <div class="main__title">
+            <h3 th:text="@{/id.title/}">I really love this car omg</h3>
+        </div>
+        <div class="review__category">
+            <h3>Sedan</h3>
+        </div>
+        <div class="review__body">
+            <p>This is one of those cars that you will hate. Why because it may out live you. You will just get sick of it
+                being so trustworthy and reliable. For gosh sake Toyota give me something to talk about other that oil changes
+                and new tires. Not even a squeaky belt after 100,000 miles. I drive 25-28k per year and this car it the best
+                vehicle I have ever owned.</p>
+        </div>
+        <div class="review__hashtags">
+            <small>
+                #fast
+            </small>
+        </div>
+
+    </section>
 </main>
+
 </body>
 
 </html>
