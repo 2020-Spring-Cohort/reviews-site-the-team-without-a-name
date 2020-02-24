@@ -3,6 +3,7 @@ package org.wecancodeit.reviews.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -15,26 +16,21 @@ public class Review {
     @Id
     @GeneratedValue
     private Long id;
-
-    public Collection<Hashtag> getHashtags() {
-        return hashtags;
-    }
-
     @ManyToMany
     private Collection<Hashtag> hashtags;
-
-
-    public Review(Category category, String title, String reviewBody){
+    public Review(Category category, String title, String reviewBody, Hashtag...hashtag ){
 
          this.category = category;
          this.title = title;
          this.reviewBody = reviewBody;
+         this.hashtags= Arrays.asList(hashtag);
     }
     public Review(){
 
     }
-
-
+    public Collection<Hashtag> getHashtags() {
+        return hashtags;
+    }
 
     @Override
     public boolean equals(Object o) {
