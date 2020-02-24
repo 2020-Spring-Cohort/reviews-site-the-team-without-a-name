@@ -15,8 +15,14 @@ public class Review {
     @Id
     @GeneratedValue
     private Long id;
+
+    public Collection<Hashtag> getHashtags() {
+        return hashtags;
+    }
+
     @ManyToMany
     private Collection<Hashtag> hashtags;
+
 
     public Review(Category category, String title, String reviewBody){
 

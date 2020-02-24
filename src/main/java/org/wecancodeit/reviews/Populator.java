@@ -30,8 +30,8 @@ public class Populator implements CommandLineRunner{
         categoryStorage.store(sedan);
         Category coupe = new Category("Coupe");
         categoryStorage.store(coupe);
-        Review review1 = new Review(sedan, "Review", "Body");
-        Review review2 = new Review(coupe, "Review", "Body");
+        Review review1 = new Review(sedan, "SedanReview", "Body");
+        Review review2 = new Review(coupe, "CoupeReview", "Body");
         reviewStorage.store(review1);
         reviewStorage.store(review2);
         hashtagStorage.store(new Hashtag("holyshit"));

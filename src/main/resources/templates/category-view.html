@@ -31,8 +31,8 @@
 </header>
 <main class="container__main">
     <h2 th:text="${category.type}"></h2>
-    <ul th:each="review:${reviews}">
-        <li> <a th:href="/category/${category}/${review}"> </a>  </li>
+    <ul >
+        <li th:each="review:${category.reviews}"> <a th:text="${review.title}" th:href="@{'/review/' + ${review.id}}"> </a>  </li>
 
 
     </ul>

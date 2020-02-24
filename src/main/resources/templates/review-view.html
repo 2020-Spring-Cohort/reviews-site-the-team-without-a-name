@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,19 +35,19 @@
     <section class="main__review review">
 
         <div class="main__title">
-            <h3 th:text="@{/id.title/}">I really love this car omg</h3>
+            <h3 th:text="${review.title}">I really love this car omg</h3>
         </div>
         <div class="review__category">
             <h3>Sedan</h3>
         </div>
-        <div class="review__body">
+        <div class="review__body" th:text="${review.reviewBody}">
             <p>This is one of those cars that you will hate. Why because it may out live you. You will just get sick of it
                 being so trustworthy and reliable. For gosh sake Toyota give me something to talk about other that oil changes
                 and new tires. Not even a squeaky belt after 100,000 miles. I drive 25-28k per year and this car it the best
                 vehicle I have ever owned.</p>
         </div>
-        <div class="review__hashtags">
-            <small>
+        <div class="review__hashtags" >
+            <small th:each="hashtag:${review.hashtags}" th:text="${hashtag.hashtag}">
                 #fast
             </small>
         </div>
