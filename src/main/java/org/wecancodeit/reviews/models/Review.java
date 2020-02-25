@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Entity
 public class Review {
+    @Lob
     private  String reviewBody;
     private  String title;
     @ManyToOne
