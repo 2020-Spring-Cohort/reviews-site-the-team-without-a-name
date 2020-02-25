@@ -37,7 +37,7 @@ public class ReviewControllerTest {
 
     @Test
     public void displayReviewReturnsReviewTemplate(){
-        String result = underTest.displayReview(1, model);
+        String result = underTest.displayReview(1L, model);
         assertThat(result).isEqualTo("review-view");
 
     }
@@ -45,7 +45,7 @@ public class ReviewControllerTest {
     @Test
     public void displayReviewInteractsWithDependenciesCorrectly(){
 
-        underTest.displayReview(1, model);
+        underTest.displayReview(1L, model);
         verify(mockStorage).findReviewById(1);
         verify(model).addAttribute("review", testReview);
     }

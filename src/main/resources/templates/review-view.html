@@ -53,6 +53,10 @@
         </div>
 
     </section>
+    <form th:action="${review.id}+'/add-comment'" method="POST">
+        <input name="comment" type="text">
+        <button type="submit"> Add Comment</button>
+    </form>
 </main>
 
 </body>

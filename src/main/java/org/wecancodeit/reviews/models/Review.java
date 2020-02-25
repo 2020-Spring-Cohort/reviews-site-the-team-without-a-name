@@ -3,9 +3,8 @@ package org.wecancodeit.reviews.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Objects;
+
+import java.util.*;
 
 @Entity
 public class Review {
@@ -19,6 +18,8 @@ public class Review {
     private Long id;
     @ManyToMany
     private Collection<Hashtag> hashtags;
+    @OneToMany
+    private Collection<Comment> comments;
     public Review(Category category, String title, String reviewBody, Hashtag...hashtag ){
 
          this.category = category;

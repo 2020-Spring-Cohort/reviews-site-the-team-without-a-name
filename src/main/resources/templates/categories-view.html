@@ -33,8 +33,13 @@
 <main class="container__main">
     <h2 th:each="category:${categories}"><a th:text="${category.type}" th:href="@{'/categories/' + ${category.type}}">Sedan</a></h2>
 
-    
+    <form action="add-category" method="POST">
+        <input name="type" type="text">
+        <button type="submit"> Add Category</button>
+    </form>
+
 </main>
+
 </body>
 
 
