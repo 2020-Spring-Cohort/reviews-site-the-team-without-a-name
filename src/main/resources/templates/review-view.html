@@ -47,7 +47,7 @@
                 vehicle I have ever owned.</p>
         </div>
         <div class="review__hashtags" >
-            <small th:each="hashtag:${review.hashtags}" th:text="${hashtag.hashtag}">
+            <small th:each="hashtag:${review.hashtags}" th:text="'#'+${hashtag.hashtag}">
                 #fast
             </small>
         </div>
