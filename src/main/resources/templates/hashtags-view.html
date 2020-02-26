@@ -32,7 +32,11 @@
 
   <main class="container__main">
     <h1>Hashtags</h1>
-    <h2 th:each="hashtag:${hashtags}"><a th:href="@{'/hashtags/' + ${hashtag.id}}" th:text="${hashtag.hashtag}">Sedan</a></h2>  </main>
+    <h2 th:each="hashtag:${hashtags}">
+      <a th:href="@{'/hashtags/' + ${hashtag.id}}" th:text="${hashtag.hashtag}">Sedan</a></h2>
+  </main>
+
+
 </body>
 
 </html>

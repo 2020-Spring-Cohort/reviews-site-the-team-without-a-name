@@ -19,12 +19,19 @@ public class Hashtag {
     @Id
     @GeneratedValue
     private Long id;
+
+    public Collection<Review> getReviews() {
+        return reviews;
+    }
+
     @ManyToMany(mappedBy = "hashtags")
     private Collection<Review> reviews;
 
     public String getHashtag() {
         return hashtag;
     }
+
+
 
     protected Hashtag(){
 

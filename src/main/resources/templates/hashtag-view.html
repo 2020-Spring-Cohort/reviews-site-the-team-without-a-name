@@ -30,6 +30,14 @@
     </nav>
 </header>
 
+
+<main class="container__main">
+    <div th:each="review:${hashtag.reviews}">
+        <a th:text="${review.title}" th:href="@{'/review/'+ ${review.id} }"> </a>
+    </div>
+</main>
+
+
 </body>
 
 </html>
