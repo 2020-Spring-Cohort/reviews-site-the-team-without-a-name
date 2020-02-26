@@ -13,6 +13,11 @@ import org.wecancodeit.reviews.models.Review;
 import org.wecancodeit.reviews.storage.CommentStorage;
 import org.wecancodeit.reviews.storage.ReviewStorage;
 import org.wecancodeit.reviews.storage.repositories.CommentRepository;
+import org.wecancodeit.reviews.storage.repositories.HashtagRepository;
+
+
+import java.awt.print.Book;
+import java.util.Optional;
 
 
 @Controller
@@ -22,11 +27,14 @@ public class ReviewController {
     private ReviewStorage reviewStorage;
     private CommentStorage commentStorage;
     private CommentRepository commentRepo;
+    private HashtagRepository hashtagRepo;
 
 
-    public ReviewController(ReviewStorage reviewStorage, CommentRepository commentRepo) {
+    public ReviewController(ReviewStorage reviewStorage, CommentRepository commentRepo,
+                            HashtagRepository hashtagRepo) {
         this.reviewStorage = reviewStorage;
         this.commentRepo = commentRepo;
+        this.hashtagRepo = hashtagRepo;
     }
 
 
@@ -47,12 +55,21 @@ public class ReviewController {
     @PostMapping("/review/{id}/add-comment")
     public String addComment(@RequestParam String comment, Review review, @PathVariable Long id) {
         Comment commentToAddToReview = new Comment(comment, reviewStorage.findReviewById(id));
-//        Optional<Comment> commentToAddOpt = commentRepo.findByName()
         commentRepo.save(commentToAddToReview);
         Review reviewToAddCommentTo = reviewStorage.findReviewById(id);
         reviewToAddCommentTo.addCommentToReview(commentToAddToReview);
         reviewStorage.store(reviewToAddCommentTo);
         return "redirect:/review/" + id;
 
+    }
+
+    @PostMapping("/review/{id}/add-hashtag")
+    public String addHashtagToReview(@RequestParam String hashtagName, @PathVariable Long id) {
+        Hashtag hashtagToAddToReview = new Hashtag(hashtagName);
+        Review reviewToAddHashtagTo = reviewStorage.findReviewById(id);
+        reviewToAddHashtagTo.addHashtag(hashtagToAddToReview);
+        hashtagRepo.save(hashtagToAddToReview);
+        reviewStorage.store(reviewToAddHashtagTo);
+        return "redirect:/review/" + id;
     }
 }

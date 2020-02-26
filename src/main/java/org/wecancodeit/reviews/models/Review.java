@@ -34,6 +34,10 @@ public class Review {
         return hashtags;
     }
 
+    public void addHashtag(Hashtag hashtagToAdd){
+        hashtags.add(hashtagToAdd);
+    }
+
     public Collection<Comment> getComments(){
         return comments;
     }
@@ -41,6 +45,8 @@ public class Review {
     public void addCommentToReview(Comment commentToAdd){
         comments.add(commentToAdd);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

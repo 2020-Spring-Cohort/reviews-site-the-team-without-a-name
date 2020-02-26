@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 @Entity
@@ -25,11 +26,12 @@ public class Hashtag {
         return hashtag;
     }
 
-    public Hashtag(){
+    protected Hashtag(){
 
     }
 
     public Hashtag(String hashtag) {
+        reviews = new ArrayList<>();
         this.hashtag = hashtag;
     }
 

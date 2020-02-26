@@ -11,6 +11,7 @@ import org.wecancodeit.reviews.models.Hashtag;
 import org.wecancodeit.reviews.models.Review;
 import org.wecancodeit.reviews.storage.ReviewStorage;
 import org.wecancodeit.reviews.storage.repositories.CommentRepository;
+import org.wecancodeit.reviews.storage.repositories.HashtagRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -28,7 +29,8 @@ public class ReviewControllerTest {
     void setUp(){
         mockStorage = mock(ReviewStorage.class);
         CommentRepository commentRepo = mock(CommentRepository.class);
-        underTest = new ReviewController(mockStorage, commentRepo);
+        HashtagRepository hashtagRepo = mock(HashtagRepository.class);
+        underTest = new ReviewController(mockStorage, commentRepo, hashtagRepo);
         model = mock(Model.class);
         Category testCategory = new Category("Sedan");
         Hashtag testHashtag = new Hashtag("");
