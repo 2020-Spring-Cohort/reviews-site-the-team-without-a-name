@@ -34,6 +34,14 @@ public class Review {
         return hashtags;
     }
 
+    public Collection<Comment> getComments(){
+        return comments;
+    }
+
+    public void addCommentToReview(Comment commentToAdd){
+        comments.add(commentToAdd);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

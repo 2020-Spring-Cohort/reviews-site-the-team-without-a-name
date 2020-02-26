@@ -12,8 +12,10 @@ import org.wecancodeit.reviews.models.Hashtag;
 import org.wecancodeit.reviews.models.Review;
 import org.wecancodeit.reviews.storage.CommentStorage;
 import org.wecancodeit.reviews.storage.ReviewStorage;
+import org.wecancodeit.reviews.storage.repositories.CommentRepository;
 
-
+import java.awt.print.Book;
+import java.util.Optional;
 
 
 @Controller
@@ -22,6 +24,8 @@ public class ReviewController {
 
     private ReviewStorage reviewStorage;
     private CommentStorage commentStorage;
+    private CommentRepository commentRepo;
+
 
     public ReviewController(ReviewStorage reviewStorage) {
         this.reviewStorage = reviewStorage;
@@ -42,10 +46,15 @@ public class ReviewController {
         return "redirect:review";
     }
 
-    @PostMapping("{id}/add-comment")
-    public String addComment(@RequestParam String comment, Review review) {
-        Comment commentToStore = new Comment(comment, review);
-        commentStorage.store(commentToStore);
-        return "redirect:review";
+    @PostMapping("/review/{id}/add-comment")
+    public String addComment(@RequestParam String comment, Review review, @PathVariable Long id) {
+        Comment commentToAddToReview = new Comment(comment, review);
+//        Optional<Comment> commentToAddOpt = commentRepo.findByName()
+        commentRepo.save(commentToAddToReview);
+        Review reviewToAddCommentTo = reviewStorage.findReviewById(id);
+        reviewToAddCommentTo.addCommentToReview(commentToAddToReview);
+        reviewStorage.store(reviewToAddCommentTo);
+        return "redirect:/review/" + id;
+
     }
 }
