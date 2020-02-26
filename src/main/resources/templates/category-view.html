@@ -29,13 +29,22 @@
         </ul>
     </nav>
 </header>
-<main class="container__main">
+
+</body><main class="container__main">
     <h2 th:text="${category.type}"></h2>
     <ul >
-        <li th:each="review:${category.reviews}"> <a th:text="${review.title}" th:href="@{'/review/' + ${review.id}}"> </a>  </li>
+        <li th:each="review:${category.reviews}">
+            <a th:text="${review.title}" th:href="@{'/review/' + ${review.id}}"> </a>  </li>
 
 
     </ul>
+
+    <form th:action="@{${categoryType} +'/add-review'}" method="POST">
+        <input name="category" type="text">
+        <input name="reviewTitle" type="text">
+        <input name="reviewBody" type="text">
+        <button type="submit"> Add Comment</button>
+    </form>
+
 </main>
-</body>
 </html>
