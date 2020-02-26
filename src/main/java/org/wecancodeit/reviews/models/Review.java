@@ -25,7 +25,7 @@ public class Review {
          this.category = category;
          this.title = title;
          this.reviewBody = reviewBody;
-         this.hashtags= Arrays.asList(hashtag);
+         this.hashtags= new ArrayList<>(Arrays.asList(hashtag));
     }
     public Review(){
 

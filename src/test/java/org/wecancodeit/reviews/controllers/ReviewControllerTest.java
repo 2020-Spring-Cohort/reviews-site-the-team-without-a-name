@@ -10,6 +10,7 @@ import org.wecancodeit.reviews.models.Category;
 import org.wecancodeit.reviews.models.Hashtag;
 import org.wecancodeit.reviews.models.Review;
 import org.wecancodeit.reviews.storage.ReviewStorage;
+import org.wecancodeit.reviews.storage.repositories.CommentRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -26,7 +27,8 @@ public class ReviewControllerTest {
     @BeforeEach
     void setUp(){
         mockStorage = mock(ReviewStorage.class);
-        underTest = new ReviewController(mockStorage);
+        CommentRepository commentRepo = mock(CommentRepository.class);
+        underTest = new ReviewController(mockStorage, commentRepo);
         model = mock(Model.class);
         Category testCategory = new Category("Sedan");
         Hashtag testHashtag = new Hashtag("");

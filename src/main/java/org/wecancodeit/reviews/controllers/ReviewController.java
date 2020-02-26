@@ -14,9 +14,6 @@ import org.wecancodeit.reviews.storage.CommentStorage;
 import org.wecancodeit.reviews.storage.ReviewStorage;
 import org.wecancodeit.reviews.storage.repositories.CommentRepository;
 
-import java.awt.print.Book;
-import java.util.Optional;
-
 
 @Controller
 public class ReviewController {
@@ -27,8 +24,9 @@ public class ReviewController {
     private CommentRepository commentRepo;
 
 
-    public ReviewController(ReviewStorage reviewStorage) {
+    public ReviewController(ReviewStorage reviewStorage, CommentRepository commentRepo) {
         this.reviewStorage = reviewStorage;
+        this.commentRepo = commentRepo;
     }
 
 
@@ -48,7 +46,7 @@ public class ReviewController {
 
     @PostMapping("/review/{id}/add-comment")
     public String addComment(@RequestParam String comment, Review review, @PathVariable Long id) {
-        Comment commentToAddToReview = new Comment(comment, review);
+        Comment commentToAddToReview = new Comment(comment, reviewStorage.findReviewById(id));
 //        Optional<Comment> commentToAddOpt = commentRepo.findByName()
         commentRepo.save(commentToAddToReview);
         Review reviewToAddCommentTo = reviewStorage.findReviewById(id);
