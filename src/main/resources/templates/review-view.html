@@ -53,6 +53,12 @@
         </div>
 
     </section>
+    <section>
+        <p th:each="comment : ${review.comments}" th:text="${comment.comment}">
+
+        </p>
+
+    </section>
     <form th:action="${review.id}+'/add-comment'" method="POST">
         <input name="comment" type="text">
         <button type="submit"> Add Comment</button>
