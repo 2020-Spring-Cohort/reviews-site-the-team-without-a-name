@@ -7,6 +7,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import org.wecancodeit.reviews.models.Category;
 import org.wecancodeit.reviews.storage.CategoryStorage;
+import org.wecancodeit.reviews.storage.repositories.CategoryRepository;
+import org.wecancodeit.reviews.storage.repositories.ReviewRepository;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,12 +27,17 @@ public class CategoryControllerTest {
     private CategoryController underTest;
     private CategoryStorage mockStorage;
     private Model mockModel;
+    private CategoryRepository mockStorage2;
+    private ReviewRepository mockStorage3;
+
 
     @BeforeEach
     public void setUp() {
         mockModel = mock(Model.class);
         mockStorage = mock(CategoryStorage.class);
-        underTest = new CategoryController(mockStorage);
+        mockStorage2 = mock(CategoryRepository.class);
+        mockStorage3 = mock(ReviewRepository.class);
+        underTest = new CategoryController(mockStorage,mockStorage2,mockStorage3);
         mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
     }
 

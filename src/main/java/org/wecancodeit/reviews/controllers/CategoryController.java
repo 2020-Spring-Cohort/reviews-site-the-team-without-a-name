@@ -24,8 +24,11 @@ public class CategoryController {
     private ReviewStorage reviewStorage;
     private CategoryRepository categoryRepo;
 
-    public CategoryController(CategoryStorage categoryStorage) {
+    public CategoryController(CategoryStorage categoryStorage, CategoryRepository categoryRepo, ReviewRepository reviewRepo) {
         this.categoryStorage = categoryStorage;
+        this.categoryRepo = categoryRepo;
+        this.reviewRepo = reviewRepo;
+
     }
 
     @RequestMapping("/categories")
@@ -52,11 +55,11 @@ public class CategoryController {
     @PostMapping("/categories/{categoryType}/add-review")
     public String addReviewToCategory(@PathVariable String categoryType,
                                       @RequestParam String category, String reviewTitle, String reviewBody){
-        Category categoryToAddReviewTo= categoryStorage.findCategoryByType(category.getType());
-        Review reviewToAddToCategory = new Review(inputCategory, reviewTitle, reviewBody);
+        Review reviewToAddToCategory = new Review(categoryRepo.findByType(category).get(), reviewTitle, reviewBody);
         reviewRepo.save(reviewToAddToCategory);
-        categoryToAddReviewTo.addReviewToCategory(reviewToAddToCategory);
-        categoryStorage.store(categoryToAddReviewTo);
+//        Category categoryToAddReviewTo= categoryStorage.findCategoryByType(category.getType());
+//        categoryToAddReviewTo.addReviewToCategory(reviewToAddToCategory);
+//        categoryStorage.store(categoryToAddReviewTo);
         return "redirect:/categories/" + categoryType;
 
     }
