@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/layout.css">
     <script src="https://kit.fontawesome.com/94e0f58538.js" crossorigin="anonymous"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
     <title>CategoryView</title>
 </head>
 
 <body class="container">
     <header class="container__header">
         <div class="header__page-title">
-            <h1>Fast Track To Nowhere</h1>
+            <p class="site-header-title">Fast Track To Nowhere</p>
             <p>Very biased reviews</p>
         </div>
         <div class="header__search">
@@ -34,7 +34,7 @@
             <h2 th:text="${category.type}"></h2>
             <ul>
                 <li th:each="review:${category.reviews}">
-                    <a th:text="${review.title}" th:href="@{'/review/' + ${review.id}}"> </a> </li>
+                    <a th:text="${review.title}" th:href="@{'/review/' + ${review.id}}" class="review-link"> </a> </li>
 
 
             </ul>

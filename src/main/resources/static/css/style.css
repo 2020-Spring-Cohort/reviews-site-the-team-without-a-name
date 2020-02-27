@@ -4,8 +4,19 @@
   box-sizing: border-box;
 }
 
+h1{
+  font-family: 'Lacquer', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+}
+
 h2{
   font-size: 3rem;
+}
+
+.site-header-title{
+  font-family: 'Lacquer';
+  font-size: 2rem;
+  font-weight: 900;
 }
 
 body{
@@ -20,9 +31,7 @@ a{
 }
 
 a:hover{
-
   background-color: gray;
-  padding: 2px;
 }
 
 
@@ -37,7 +46,7 @@ i{
 
 }
 
-.navbar ul{
+ul{
 
   list-style: none;
 
@@ -53,6 +62,7 @@ i{
 
 .container__main{
   margin-top: 2%;
+  font-size: 1.5rem;
 }
 
 .container__main p{
@@ -87,7 +97,21 @@ padding-top: 10px;
 
 .hashtag{
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   background-color: darkred;
   border-radius: 10px;
+}
+
+.hashtag a:hover{
+  background-color: red;
+  border-radius: 10px;
+}
+
+.hashtag a{
+  font-family: 'Lacquer';
+}
+
+.review-link{
+  font-size: 1.6rem;
+
 }
