@@ -30,7 +30,17 @@ public class CategoryStorageJpaImp implements CategoryStorage {
 
     @Override
     public Category findCategoryByType(String categoryType){
-        return categoryRepository.findByType(categoryType).get();
+        Category retrievedCategory;
+        try{
+            retrievedCategory = categoryRepository.findByType(categoryType).get();
+        } catch (Exception e){
+            throw new CategoryNotFoundException(e.getMessage());
+        }
+
+        return retrievedCategory;
+
+
+
     }
 
 

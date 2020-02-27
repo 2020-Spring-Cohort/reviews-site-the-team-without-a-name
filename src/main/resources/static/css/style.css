@@ -15,7 +15,7 @@ h2{
 
 .site-header-title{
   font-family: 'Lacquer';
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: 900;
 }
 
@@ -100,6 +100,7 @@ padding-top: 10px;
   font-size: 1.5rem;
   background-color: darkred;
   border-radius: 10px;
+  margin: 0 2px;
 }
 
 .hashtag a:hover{
