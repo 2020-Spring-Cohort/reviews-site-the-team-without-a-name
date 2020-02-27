@@ -5,7 +5,7 @@
 .container{
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 0.5fr repeat(5, 1fr);
+  grid-template-rows: 100px auto;
 }
 
 .container__header{
@@ -33,6 +33,8 @@
   grid-row: 3/5;
   grid-column: 2/6;
   justify-items: center;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
 }
 
 
@@ -64,4 +66,24 @@
 
 .header__search input{
   width: 90%;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.content-col-left{
+  grid-column: 1;
+}
+.content-col-right{
+  grid-column: 2;
+}
+
+.centered-text{
+  grid-column: 1/3;
+}
+
+.row-1{
+  grid-row: 1/3;
 }

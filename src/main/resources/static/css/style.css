@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+h2{
+  font-size: 3rem;
+}
+
 body{
   font-family: sans-serif;
   background-color: #111;
@@ -39,6 +43,10 @@ i{
 
 }
 
+.welcome-text{
+  font-size: 1.5rem;
+}
+
 .container__header{
   background-color: rgba(255,255,255,0.1);
 }
@@ -57,7 +65,29 @@ i{
 }
 
 .review{
+  padding: 50px;
+}
+
+.review div{
+padding-top: 10px;
 
 
+}
 
+.comment-section{
+  width: 100%;
+}
+
+.comment{
+  background-color: rgba(255,255,255,0.1);
+  padding:10px;
+  margin-top: 2px;
+  text-align: left;
+}
+
+.hashtag{
+  font-style: italic;
+  font-size: 1.2rem;
+  background-color: darkred;
+  border-radius: 10px;
 }

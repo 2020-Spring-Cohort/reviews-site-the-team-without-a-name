@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,29 +13,29 @@
 </head>
 
 <body class="container">
-<header class="container__header">
-    <div class="header__page-title">
-        <h1>Fast Track To Nowhere</h1>
-        <p>Very biased reviews</p>
-    </div>
-    <div class="header__search">
-        <i class="fas fa-search"></i><input type="text" placeholder="search">
-    </div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li> <a href="../hashtags">Search</a></li>
-            <li><a href="../categories">Categories</a></li>
-        </ul>
-    </nav>
-</header>
+    <header class="container__header">
+        <div class="header__page-title">
+            <h1>Fast Track To Nowhere</h1>
+            <p>Very biased reviews</p>
+        </div>
+        <div class="header__search">
+            <i class="fas fa-search"></i><input type="text" placeholder="search">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li> <a href="../hashtags">Hashtags</a></li>
+                <li><a href="../categories">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
 
 
-<main class="container__main">
-    <div th:each="review:${hashtag.reviews}">
-        <a th:text="${review.title}" th:href="@{'/review/'+ ${review.id} }"> </a>
-    </div>
-</main>
+    <main class="container__main">
+        <div th:each="review:${hashtag.reviews}">
+            <a th:text="${review.title}" th:href="@{'/review/'+ ${review.id} }"> </a>
+        </div>
+    </main>
 
 
 </body>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,31 +13,34 @@
 </head>
 
 <body class="container">
-<header class="container__header">
-    <div class="header__page-title">
-        <h1>Fast Track To Nowhere</h1>
-        <p>Very biased reviews</p>
-    </div>
-    <div class="header__search">
-        <i class="fas fa-search"></i><input type="text" placeholder="search">
-    </div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li> <a href="../hashtags">Search</a></li>
-            <li><a href="../categories">Categories</a></li>
-        </ul>
-    </nav>
-</header>
-<main class="container__main">
-    <h2 th:each="category:${categories}"><a th:text="${category.type}" th:href="@{'/categories/' + ${category.type}}">Sedan</a></h2>
-
-    <form action="add-category" method="POST">
-        <input name="type" type="text">
-        <button type="submit"> Add Category</button>
-    </form>
-
-</main>
+    <header class="container__header">
+        <div class="header__page-title">
+            <h1>Fast Track To Nowhere</h1>
+            <p>Very biased reviews</p>
+        </div>
+        <div class="header__search">
+            <i class="fas fa-search"></i><input type="text" placeholder="search">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li> <a href="../hashtags">Hashtags</a></li>
+                <li><a href="../categories">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container__main">
+        <div class="content-col-left">
+            <h2 th:each="category:${categories}"><a th:text="${category.type}"
+                    th:href="@{'/categories/' + ${category.type}}">Sedan</a></h2>
+        </div>
+        <div class="content-col-right">
+            <form action="add-category" method="POST">
+                <input name="type" type="text">
+                <button type="submit"> Add Category</button>
+            </form>
+        </div>
+    </main>
 
 </body>
 

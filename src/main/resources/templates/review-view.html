@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,62 +14,73 @@
 
 <body class="container">
 
-<header class="container__header">
-    <div class="header__page-title">
-        <h1>Fast Track To Nowhere</h1>
-        <p>Very biased reviews</p>
-    </div>
-    <div class="header__search">
-        <i class="fas fa-search"></i><input type="text" placeholder="search">
-    </div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li> <a href="../hashtags">Search</a></li>
-            <li><a href="../categories">Categories</a></li>
-        </ul>
-    </nav>
-</header>
-<main class="container__main">
-    <h2 th:text="'Very Biased '+${review.category.type} +' Reviews'"class="main__header"> Very Biased Sedan Reviews</h2>
-    <section class="main__review review">
-
-        <div class="main__title">
-            <h3 th:text="${review.title}">I really love this car omg</h3>
+    <header class="container__header">
+        <div class="header__page-title">
+            <h1>Fast Track To Nowhere</h1>
+            <p>Very biased reviews</p>
         </div>
-        <div class="review__category">
-            <h3 th:text="${review.category.type}">Sedan</h3>
+        <div class="header__search">
+            <i class="fas fa-search"></i><input type="text" placeholder="search">
         </div>
-        <div class="review__body" th:text="${review.reviewBody}">
-            <p>This is one of those cars that you will hate. Why because it may out live you. You will just get sick of it
-                being so trustworthy and reliable. For gosh sake Toyota give me something to talk about other that oil changes
-                and new tires. Not even a squeaky belt after 100,000 miles. I drive 25-28k per year and this car it the best
-                vehicle I have ever owned.</p>
+        <nav class="navbar">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li> <a href="../hashtags">Hashtags</a></li>
+                <li><a href="../categories">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container__main">
+        <h2 th:text="'Very Biased '+${review.category.type} +' Reviews'" class="main__header"> Very Biased Sedan Reviews
+        </h2>
+
+        <section class="main__review review content-col-left">
+            <div class="main__title">
+                <h3 th:text="${review.title}">I really love this car omg</h3>
+            </div>
+
+            <div class="review__category">
+                <h3 th:text="${review.category.type}">Sedan</h3>
+            </div>
+
+            <div class="review__body" th:text="${review.reviewBody}">
+                <p>This is one of those cars that you will hate. Why because it may out live you. You will just get sick
+                    of it
+                    being so trustworthy and reliable. For gosh sake Toyota give me something to talk about other that
+                    oil changes
+                    and new tires. Not even a squeaky belt after 100,000 miles. I drive 25-28k per year and this car it
+                    the best
+                    vehicle I have ever owned.</p>
+            </div>
+
+            <div class="review__hashtags">
+                <small th:each="hashtag:${review.hashtags}" th:text="'#'+${hashtag.hashtag} + ' '" class="hashtag">
+                    #fast
+                </small>
+            </div>
+
+        </section>
+
+        <section class="comment-section">
+            <p th:each="comment : ${review.comments}" th:text="${comment.comment}" class="comment">
+
+            </p>
+
+        </section>
+        <div class="content-col-right row-1">
+            <form th:action="${review.id}+'/add-comment'" method="POST">
+                <input name="comment" type="text">
+                <button type="submit"> Add Comment</button>
+            </form>
+            <form th:action="'/review/' + ${review.id} + '/add-hashtag'" method="POST">
+                <input name="hashtagName" type="text">
+                <button type="submit">Add Hashtag</button>
+            </form>
+
         </div>
-        <div class="review__hashtags" >
-            <small th:each="hashtag:${review.hashtags}" th:text="'#'+${hashtag.hashtag}">
-                #fast
-            </small>
-        </div>
 
-    </section>
-    <section>
-        <p th:each="comment : ${review.comments}" th:text="${comment.comment}">
 
-        </p>
-
-    </section>
-    <form th:action="${review.id}+'/add-comment'" method="POST">
-        <input name="comment" type="text">
-        <button type="submit"> Add Comment</button>
-    </form>
-
-    <form th:action="'/review/' + ${review.id} + '/add-hashtag'" method="POST">
-        <input name = "hashtagName" type="text">
-        <button type="submit">Add Hashtag</button>
-    </form>
-
-</main>
+    </main>
 
 </body>
 
